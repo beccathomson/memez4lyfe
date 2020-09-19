@@ -31,7 +31,7 @@ def train_model(x, y):
 
 def save_files(model, vectorizer):
     pickle.dump(model, open("classifier.pickle", "wb"))
-    pickle.dump(vectorizer, open("../vectorizer.pickle", "wb"))
+    pickle.dump(vectorizer, open("vectorizer.pickle", "wb"))
     pickle.dump(le, open('label_encoder.pickle', 'wb'))
 
     # see load_and_use_classifier.py for example usage
