@@ -10,9 +10,10 @@ def get_current_time():
 	return {'time': time.time()}
 
 
-@app.route('/meme')
+@app.route('/meme', methods=["GET", "POST"])
 def get_meme_image_url():
 	input_caption = request.args.get('caption')
+	return {'input_caption': input_caption}
 	# input_caption = ["i am an example caption"]
 	vectorizer = pickle.load(open("vectorizer.pickle", "rb"))
 	loaded_model = pickle.load(open("classifier.pickle", "rb"))

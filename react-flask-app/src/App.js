@@ -12,19 +12,14 @@ function App() {
     });
   }, []);
 
+
   useEffect(() => {
-    fetch('/meme').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
+    fetch('/meme?caption=\'input sample caption\'').then(res => res.json()).then(data => setMemeUrl(data.input_caption));
   }, []);
 
   return (
-    <div className="App">
+    <div className="Memez4Lyfe">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
