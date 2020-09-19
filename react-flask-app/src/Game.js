@@ -1,90 +1,94 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import IconButton from "@material-ui/core/IconButton";
+import AddBoxIcon from "@material-ui/icons/AddBox";
+import RemoveIcon from "@material-ui/icons/Remove";
 
-class Game extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      caption1: "",
-      caption2: "",
-      caption3: "",
-      caption4: "",
-      caption5: "",
-    };
+function Game() {
+  const [inputList, setInputList] = useState([{}]);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  // handleChange(event) {
+  //   if (!Object.keys(this.state.captions).includes(event.target.name)) {
+  //     delete this.state.captions[event.target.name];
+  //   }
+  //   let newCaptions = Object.assign({}, this.state.captions);
+  //   newCaptions[event.target.name] = event.target.value;
+  //   this.setState({ captions: newCaptions });
+  // }
 
-  componentDidMount() {}
-
-  componentDidUpdate() {}
-
-  handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
-    // this.setState({ caption1: event.target.value });
-  }
-
-  handleSubmit(event) {
+  const handleSubmit = (event) => {
     alert(
-      "Submitted captions were: " + this.state.caption1 + this.state.caption2
+      "Submitted captions were: " +
+        Object.keys(this.state.captions) +
+        "\n" +
+        Object.values(this.state.captions)
     );
     event.preventDefault();
-  }
+  };
 
-  render() {
-    return (
-      <div className="game">
-        <form onSubmit={this.handleSubmit}>
-          <TextField
-            id="textbox"
-            name="caption1"
-            label="Caption 1"
-            variant="outlined"
-            onChange={this.handleChange}
-          />
+  // handle input change
+  const handleInputChange = (e, index) => {
+    const list = [...inputList];
+    list[index] = e.target.value;
+    setInputList(list);
+  };
 
-          <TextField
-            id="textbox"
-            name="caption2"
-            label="Caption 2"
-            variant="outlined"
-            onChange={this.handleChange}
-          />
+  // handle click event of the Remove button
+  const handleRemoveClick = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
 
-          <TextField
-            id="textbox"
-            name="caption3"
-            label="Caption 3"
-            variant="outlined"
-            onChange={this.handleChange}
-          />
+  // handle click event of the Add button
+  const handleAddClick = (index) => {
+    const list = [...inputList];
+    list[index] = "";
+    setInputList(list);
+  };
 
-          <TextField
-            id="textbox"
-            name="caption4"
-            label="Caption 4"
-            variant="outlined"
-            onChange={this.handleChange}
-          />
-
-          <TextField
-            id="textbox"
-            name="caption5"
-            label="Caption 5"
-            variant="outlined"
-            onChange={this.handleChange}
-          />
-
-          <Button id="submit" variant="contained" color="primary" type="submit">
-            Submit
-          </Button>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div className="Game">
+      {inputList.map((x, i) => {
+        return (
+          <form onSubmit={handleSubmit}>
+            {
+              <TextField
+                id="textbox"
+                name={i}
+                label="Caption"
+                variant="outlined"
+                onChange={(e) => handleInputChange(e, i)}
+              />
+            }
+            <div className="btn-box">
+              {inputList.length !== 1 && (
+                <IconButton onClick={() => handleRemoveClick(i)}>
+                  <RemoveIcon />
+                </IconButton>
+              )}
+              {
+                <IconButton onClick={() => handleAddClick(i)}>
+                  <AddBoxIcon />
+                </IconButton>
+              }
+            </div>
+            <Button
+              id="submit"
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
+              Submit
+            </Button>
+          </form>
+        );
+      })}
+      <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
+    </div>
+  );
 }
 
 export default Game;
