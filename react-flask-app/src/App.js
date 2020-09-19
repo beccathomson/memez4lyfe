@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Captions from "./Captions";
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(0);
   const [memeUrl, setMemeUrl] = useState(0);
 
   useEffect(() => {
@@ -17,7 +16,7 @@ function App() {
       <header className="App-header">
         <p>The meme url is {memeUrl}.</p>
       </header>
-      <Game />
+      <Captions />
     </div>
   );
 }
