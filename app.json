@@ -1,5 +1,10 @@
 {
   "name": "Memez4lyfe",
   "description": "Input a caption and Memez4lyfe will make a meme!",
-  "repository": "https://github.com/beccathomson/memez4lyfe"
+  "repository": "https://github.com/beccathomson/memez4lyfe",
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python"
+    }
+  ]
 }
