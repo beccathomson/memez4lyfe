@@ -5,7 +5,7 @@ import sys
 def main():
     input_caption = ["i am an example caption"]
 
-    vectorizer = pickle.load(open("vectorizer.pickle", "rb"))
+    vectorizer = pickle.load(open("../vectorizer.pickle", "rb"))
     loaded_model = pickle.load(open("classifier.pickle", "rb"))
     label_encoder = pickle.load(open('label_encoder.pickle', 'rb'))
     input_caption = vectorizer.transform(input_caption)
