@@ -1,6 +1,5 @@
 {
   "name": "Memez4lyfe",
   "description": "Input a caption and Memez4lyfe will make a meme!",
-  "repository": "https://github.com/beccathomson/memez4lyfe,
-  "keywords": ["python", "meme", "flask","react"]
+  "repository": "https://github.com/beccathomson/memez4lyfe"
 }
