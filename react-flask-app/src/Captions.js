@@ -19,6 +19,7 @@ function Captions() {
 
   const handleSubmit = (event) => {
     setShowResult(true);
+    event.preventDefault();
   };
 
   // handle input change
@@ -43,7 +44,7 @@ function Captions() {
   };
 
   return (
-    <div className="Game">
+    <div className="Captions">
       <form onSubmit={handleSubmit}>
         {inputList.map((x, i) => {
           return (
