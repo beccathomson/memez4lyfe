@@ -6,7 +6,7 @@ function App() {
   const [memeUrl, setMemeUrl] = useState(0);
 
   useEffect(() => {
-    fetch("/meme?caption='input sample caption'")
+    fetch("/meme?caption='input sample caption'&num_captions=5")
       .then((res) => res.json())
       .then((data) => setMemeUrl(data.meme_url));
   }, []);
