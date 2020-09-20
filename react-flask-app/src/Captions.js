@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import RemoveIcon from "@material-ui/icons/Remove";
+import DisplayMeme from "./DisplayMeme";
 
 function Captions() {
   const [inputList, setInputList] = useState([""]);
@@ -80,8 +81,7 @@ function Captions() {
       <div className="Results">
         {showResult && (
           <p>
-            {memeUrl}
-            {inputList}
+            <DisplayMeme url={memeUrl}/>
           </p>
         )}
       </div>
