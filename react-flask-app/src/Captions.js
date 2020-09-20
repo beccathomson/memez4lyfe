@@ -12,13 +12,12 @@ function Captions() {
   const [showResult, setShowResult] = useState(false);
   const [memeUrl, setMemeUrl] = useState(0);
 
-  useEffect(() => {
-    fetch("/meme?caption='input sample caption'&num_captions=2")
+  const handleSubmit = (event) => {
+    let num = inputList.length
+    let caption_string = inputList.join(" ")
+    fetch("/meme?caption="+caption_string+"&num_captions="+num)
       .then((res) => res.json())
       .then((data) => setMemeUrl(data.meme_url));
-  }, []);
-
-  const handleSubmit = (event) => {
     setShowResult(true);
     event.preventDefault();
   };
