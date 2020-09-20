@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import RemoveIcon from "@material-ui/icons/Remove";
 
-function Game() {
+function Captions() {
   const [inputList, setInputList] = useState([""]);
   const [showResult, setShowResult] = useState(false);
   const [memeUrl, setMemeUrl] = useState(0);

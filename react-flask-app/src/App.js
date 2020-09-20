@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Game from "./Game.js";
+import Captions from "./Captions";
 
 function App() {
   return (
