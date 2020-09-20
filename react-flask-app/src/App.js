@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Captions from "./Captions";
+import Game from "./Game.js";
 
 function App() {
-  const [memeUrl, setMemeUrl] = useState(0);
-
-  useEffect(() => {
-    fetch("/meme?caption='input sample caption'&num_captions=5")
-      .then((res) => res.json())
-      .then((data) => setMemeUrl(data.meme_url));
-  }, []);
-
   return (
     <div className="Memez4Lyfe">
       <header className="App-header">
-        <p>The meme url is {memeUrl}.</p>
+        <h1>Memez4Lyfe</h1>
       </header>
       <Captions />
     </div>
