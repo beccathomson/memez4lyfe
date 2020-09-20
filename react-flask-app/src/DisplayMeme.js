@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./DisplayMeme.css";
-import Captions from "./Captions";
 
 function DisplayMeme(props){
-  const caption = 'Sad boy hour'
-  const url = props.url
 
   return(
     <div>
-      <img className='displayImg' src={url}></img>
-      <p className='displayCaption'>{caption}</p>
-      <button className='newCaption'>TRY ANOTHER CAPTION</button>
+    <img className='displayImg' src={props.url}></img>
+        {props.captions.map((caption,index)=>{
+        return(<p key={index} className='displayCaption'>{index+1}. {caption}</p>)
+    })}
     </div>
   )
 }

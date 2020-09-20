@@ -8,7 +8,7 @@ import RemoveIcon from "@material-ui/icons/Remove";
 import DisplayMeme from "./DisplayMeme";
 
 function Captions() {
-  const [inputList, setInputList] = useState(["", ""]);
+  const [inputList, setInputList] = useState([""]);
   const [showResult, setShowResult] = useState(false);
   const [memeUrl, setMemeUrl] = useState(0);
 
@@ -31,14 +31,14 @@ function Captions() {
   };
 
   // handle click event of the Remove button
-  const handleRemoveClick = () => {
+  const handleRemoveClick = (index) => {
     var list = [...inputList];
-    let last = list.pop();
+    list.splice(index, 1);
     setInputList(list);
   };
 
   // handle click event of the Add button
-  const handleAddClick = () => {
+  const handleAddClick = (index) => {
     var list = [...inputList];
     list.push("");
     setInputList(list);
@@ -59,30 +59,28 @@ function Captions() {
                   onChange={(e) => handleInputChange(e, i)}
                 />
               }
+              <div className="btn-box">
+                {inputList.length !== 1 && (
+                  <IconButton onClick={() => handleRemoveClick(i)}>
+                    <RemoveIcon />
+                  </IconButton>
+                )}
+                {
+                  <IconButton onClick={() => handleAddClick(i)}>
+                    <AddBoxIcon />
+                  </IconButton>
+                }
+              </div>
             </div>
           );
         })}
-        <div className="btn-box">
-          {inputList.length < 5 && (
-            <IconButton onClick={() => handleAddClick()}>
-              <AddBoxIcon />
-            </IconButton>
-          )}
-          {inputList.length > 2 && (
-            <IconButton onClick={() => handleRemoveClick()}>
-              <RemoveIcon />
-            </IconButton>
-          )}
-        </div>
         <Button id="submit" variant="contained" color="primary" type="submit">
           Submit
         </Button>
       </form>
       <div className="Results">
         {showResult && (
-          <p>
-            <DisplayMeme url={memeUrl}/>
-          </p>
+            <DisplayMeme url={memeUrl} captions={inputList}/>
         )}
       </div>
     </div>
